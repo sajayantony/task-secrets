@@ -1,0 +1,9 @@
+version: v1.1.0
+secrets:
+  - id: test 
+    keyvault: https://{{.Values.KeyVault}}.vault.azure.net/secrets/test
+steps:
+  - build: -t app .
+  - cmd: app
+    env: 
+      - TEST={{.Secrets.test}}
